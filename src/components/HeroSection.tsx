@@ -98,7 +98,7 @@ export default function HeroSection() {
 
         {/* Clouds image - scrolling across sky */}
         <div
-          className="absolute top-0 left-0 right-0 h-[45%] min-h-[180px] overflow-hidden pointer-events-none"
+          className="absolute top-0 left-0 right-0 h-[28%] min-h-[100px] overflow-hidden pointer-events-none"
           data-parallax="0.06"
         >
           <div className="absolute inset-0 flex motion-safe:animate-[cloudsScroll_45s_linear_infinite] will-change-transform">
