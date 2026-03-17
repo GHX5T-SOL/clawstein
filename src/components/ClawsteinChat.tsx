@@ -180,18 +180,15 @@ export default function ClawsteinChat() {
           <div className="lg:col-span-5">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-3 py-1.5 text-white/80 text-xs">
               <Shield className="text-sand-200" />
-              Clawstein Agent Chat (demo)
+              Clawstein Agent Chat
             </div>
             <h2 className="mt-4 font-display tracking-tight text-white text-3xl sm:text-4xl">
               Chat with Clawstein
             </h2>
             <p className="mt-3 text-white/75 text-base">
               Ask for beach intel, entertainment picks, or a cold-blooded market
-              take.
-              <span className="block mt-1 text-white/60">
-                (This frontend ships with demo replies; connect your model
-                provider later.)
-              </span>
+              take. Clawstein knows he&apos;s the Jewish OpenClaw agent and mascot
+              for the $CLAWSTEIN Pump Fun token.
             </p>
 
             <div className="mt-6 rounded-3xl bg-white/5 border border-white/10 p-5 shadow-soft-xl">
@@ -250,7 +247,7 @@ export default function ClawsteinChat() {
                     <div>
                       <div className="text-white font-semibold">Live Chat</div>
                       <div className="text-xs text-white/60">
-                        Demo mode • instant personality • smooth UI
+                        {useDemo ? "Demo mode" : "Live AI"} • instant personality • smooth UI
                       </div>
                     </div>
                   </div>
@@ -354,7 +351,9 @@ export default function ClawsteinChat() {
                     </div>
                     <div className="mt-2 text-xs text-white/55 flex items-center gap-2">
                       <Info className="text-sand-200" />
-                      Demo replies only in this preview.
+                      {useDemo
+                        ? "Using demo replies (API unavailable)."
+                        : "AI-powered replies via your configured provider."}
                     </div>
                   </div>
                   <button

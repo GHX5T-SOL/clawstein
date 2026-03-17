@@ -96,54 +96,30 @@ export default function HeroSection() {
           <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.95),rgba(255,255,255,0)_55%)] blur-2xl opacity-80" />
         </div>
 
-        {/* Clouds - layered, organic shapes with varied drift */}
+        {/* Clouds image - scrolling across sky */}
         <div
-          className="absolute top-10 left-0 right-0 will-change-transform pointer-events-none"
+          className="absolute top-0 left-0 right-0 h-[45%] min-h-[180px] overflow-hidden pointer-events-none"
           data-parallax="0.06"
         >
-          <div className="relative h-48 w-full overflow-visible">
-            {/* Cloud 1 - large cumulus */}
-            <div className="absolute left-[-30%] top-4 motion-safe:animate-[cloudDrift_28s_linear_infinite]">
-              <div className="relative motion-safe:animate-[cloudBob_5s_ease-in-out_infinite]">
-                <div className="absolute h-14 w-28 rounded-[50%] bg-white/90 blur-[2px] -left-2 top-2" />
-                <div className="absolute h-18 w-32 rounded-[50%] bg-gradient-to-b from-white via-white/95 to-white/80 shadow-[0_8px_32px_rgba(255,255,255,0.4)] -left-4 top-0" />
-                <div className="absolute h-12 w-24 rounded-[50%] bg-white/85 -left-6 top-4" />
-                <div className="absolute h-10 w-20 rounded-[50%] bg-white/80 -left-2 top-8" />
-                <div className="absolute h-14 w-22 rounded-[50%] bg-white/75 left-4 top-6" />
-              </div>
-            </div>
-            {/* Cloud 2 - mid-layer */}
-            <div
-              className="absolute left-[-45%] top-14 motion-safe:animate-[cloudDrift_22s_linear_infinite]"
-              style={{ animationDelay: "-3s" }}
-            >
-              <div className="relative motion-safe:animate-[cloudBob_4.2s_ease-in-out_infinite]">
-                <div className="absolute h-11 w-24 rounded-[50%] bg-gradient-to-b from-white/95 to-white/75 -left-3 top-1" />
-                <div className="absolute h-15 w-28 rounded-[50%] bg-white/90 -left-5 top-0 shadow-[0_6px_24px_rgba(255,255,255,0.3)]" />
-                <div className="absolute h-9 w-18 rounded-[50%] bg-white/80 left-2 top-5" />
-              </div>
-            </div>
-            {/* Cloud 3 - smaller, faster */}
-            <div
-              className="absolute left-[-35%] top-6 motion-safe:animate-[cloudDrift_18s_linear_infinite]"
-              style={{ animationDelay: "-6s" }}
-            >
-              <div className="relative motion-safe:animate-[cloudBob_3.8s_ease-in-out_infinite]">
-                <div className="absolute h-10 w-20 rounded-[50%] bg-gradient-to-b from-white/92 to-white/78 -left-2 top-0" />
-                <div className="absolute h-12 w-22 rounded-[50%] bg-white/85 -left-4 top-2" />
-                <div className="absolute h-8 w-14 rounded-[50%] bg-white/75 left-2 top-4" />
-              </div>
-            </div>
-            {/* Cloud 4 - wispy high cloud */}
-            <div
-              className="absolute left-[-55%] top-0 motion-safe:animate-[cloudDrift_35s_linear_infinite]"
-              style={{ animationDelay: "-10s" }}
-            >
-              <div className="relative motion-safe:animate-[cloudBob_6s_ease-in-out_infinite] opacity-90">
-                <div className="absolute h-8 w-24 rounded-[50%] bg-white/70 -left-4 top-2" />
-                <div className="absolute h-10 w-18 rounded-[50%] bg-white/65 left-0 top-0" />
-              </div>
-            </div>
+          <div className="absolute inset-0 flex motion-safe:animate-[cloudsScroll_45s_linear_infinite] will-change-transform">
+            <Image
+              src="/clouds.png"
+              alt=""
+              width={1920}
+              height={400}
+              className="h-full w-auto min-w-full object-cover object-top opacity-90"
+              draggable={false}
+              aria-hidden
+            />
+            <Image
+              src="/clouds.png"
+              alt=""
+              width={1920}
+              height={400}
+              className="h-full w-auto min-w-full object-cover object-top opacity-90 flex-shrink-0"
+              draggable={false}
+              aria-hidden
+            />
           </div>
         </div>
 
@@ -253,7 +229,7 @@ export default function HeroSection() {
 
           {/* Right: Island + Clawstein */}
           <div className="lg:col-span-5 relative">
-            <div className="relative h-[520px] sm:h-[560px] lg:h-[620px]">
+            <div className="relative h-[400px] sm:h-[520px] md:h-[560px] lg:h-[620px]">
               {/* Island image - sand island base */}
               <div className="absolute inset-x-0 bottom-10 sm:bottom-12 flex justify-center lg:justify-end z-0">
                 <div className="relative w-full max-w-[420px] sm:max-w-[460px] lg:max-w-[500px]">
@@ -282,8 +258,8 @@ export default function HeroSection() {
               </div>
 
               {/* Clawstein standing on island */}
-              <div className="absolute inset-x-0 bottom-10 sm:bottom-12 flex justify-center lg:justify-end z-20">
-                <div className="relative w-[320px] sm:w-[360px] lg:w-[380px] motion-safe:animate-[floaty_5.5s_ease-in-out_infinite]">
+              <div className="absolute inset-x-0 bottom-8 sm:bottom-10 lg:bottom-12 flex justify-center lg:justify-end z-20">
+                <div className="relative w-[260px] sm:w-[320px] md:w-[360px] lg:w-[380px] motion-safe:animate-[floaty_5.5s_ease-in-out_infinite]">
                   <div className="absolute -inset-6 rounded-[36px] bg-gradient-to-b from-slate-950/30 to-slate-950/0 blur-xl" />
                   <Image
                     src="/clawstein_standing.png"

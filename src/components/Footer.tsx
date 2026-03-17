@@ -80,7 +80,9 @@ export default function Footer() {
               <div>
                 © {year} $CLAWSTEIN. Island operations online.
               </div>
-              <div className="font-mono">Contract: {CONTRACT_ADDRESS}</div>
+              <div className="font-mono text-[11px] sm:text-xs break-all sm:break-normal">
+                Contract: {CONTRACT_ADDRESS}
+              </div>
             </div>
           </div>
         </div>

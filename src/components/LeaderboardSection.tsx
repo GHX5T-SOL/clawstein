@@ -41,23 +41,23 @@ export default function LeaderboardSection() {
             </div>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="min-w-full text-left">
+          <div className="overflow-x-auto -mx-4 sm:mx-0">
+            <table className="min-w-[420px] w-full text-left text-sm">
               <thead className="bg-slate-950/60">
                 <tr className="text-white/70 text-xs">
-                  <th className="px-5 py-4 font-semibold">Rank</th>
-                  <th className="px-5 py-4 font-semibold">Wallet Address</th>
-                  <th className="px-5 py-4 font-semibold">Score</th>
-                  <th className="px-5 py-4 font-semibold">Tokens Won</th>
+                  <th className="px-4 sm:px-5 py-3 sm:py-4 font-semibold">Rank</th>
+                  <th className="px-4 sm:px-5 py-3 sm:py-4 font-semibold">Wallet</th>
+                  <th className="px-4 sm:px-5 py-3 sm:py-4 font-semibold">Score</th>
+                  <th className="px-4 sm:px-5 py-3 sm:py-4 font-semibold">Tokens</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/10">
                 {MOCK_LEADERBOARD.map((row) => (
                   <tr key={row.rank} className="text-white">
-                    <td className="px-5 py-4 font-semibold">#{row.rank}</td>
-                    <td className="px-5 py-4 font-mono text-sm">{row.wallet}</td>
-                    <td className="px-5 py-4 font-mono">{row.score}</td>
-                    <td className="px-5 py-4 font-mono text-sand-200">
+                    <td className="px-4 sm:px-5 py-3 sm:py-4 font-semibold">#{row.rank}</td>
+                    <td className="px-4 sm:px-5 py-3 sm:py-4 font-mono text-xs sm:text-sm">{row.wallet}</td>
+                    <td className="px-4 sm:px-5 py-3 sm:py-4 font-mono">{row.score}</td>
+                    <td className="px-4 sm:px-5 py-3 sm:py-4 font-mono text-sand-200">
                       {row.tokens}
                     </td>
                   </tr>
