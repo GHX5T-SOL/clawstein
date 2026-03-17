@@ -1,35 +1,50 @@
 "use client";
 
-import dynamic from "next/dynamic";
+import { use } from "react";
+import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import ClawsteinGame from "@/components/ClawsteinGame";
 import ClawsteinChat from "@/components/ClawsteinChat";
-import TokenSection from "@/components/TokenSection";
+import ClawsteinGame from "@/components/ClawsteinGame";
+import LeaderboardSection from "@/components/LeaderboardSection";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 
-const IslandScene = dynamic(() => import("@/components/IslandScene"), {
-  ssr: false,
-  loading: () => (
-    <div className="absolute inset-0 -z-10 bg-gradient-to-b from-sky-400 to-sky-700" />
-  ),
-});
+type PageProps = {
+  params?: Promise<Record<string, string | string[]>>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+};
 
-export default function Home() {
+export default function Home(props: PageProps) {
+  // Unwrap Next.js 16 async props to avoid sync-dynamic-apis errors
+  use(props.params ?? Promise.resolve({}));
+  use(props.searchParams ?? Promise.resolve({}));
   return (
-    <main className="relative min-h-screen bg-gradient-to-b from-sky-500 via-sky-600 to-sky-800">
-      <IslandScene />
-      <HeroSection />
-      <ScrollReveal>
-        <ClawsteinGame />
-      </ScrollReveal>
-      <ScrollReveal>
-        <ClawsteinChat />
-      </ScrollReveal>
-      <ScrollReveal>
-        <TokenSection />
-      </ScrollReveal>
-      <Footer />
-    </main>
+    <div className="min-h-screen font-body text-slate-900 bg-slate-950">
+      {/* Decorative background grain */}
+      <div
+        className="pointer-events-none fixed inset-0 bg-noise opacity-30 mix-blend-soft-light bg-[length:140px_140px]"
+        aria-hidden
+      />
+
+      <Header />
+
+      <main id="top" className="relative">
+        <HeroSection />
+
+        <ScrollReveal>
+          <ClawsteinChat />
+        </ScrollReveal>
+
+        <ScrollReveal>
+          <ClawsteinGame />
+        </ScrollReveal>
+
+        <ScrollReveal>
+          <LeaderboardSection />
+        </ScrollReveal>
+
+        <Footer />
+      </main>
+    </div>
   );
 }

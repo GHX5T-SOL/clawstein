@@ -1,13 +1,13 @@
 # $CLAWSTEIN
 
-Your Jewish OpenClaw island buddy. A Pump.fun token landing page with 3D island visuals, AI chat, and a mini catch game.
+Your personal Jewish Banker & entertainment guide. An OpenClaw agent. A Pump.fun token landing page with animated island visuals, AI chat, and a coming-soon beach game.
 
 ## Features
 
-- 3D island hero scene (React Three Fiber + Drei)
-- AI chat with Clawstein (Anthropic Claude)
-- Mini 3D game: catch coconuts as Lobster Clawstein
-- Leaderboard (demo with localStorage)
+- Layered animated background: sky, clouds, ocean waves, sand, palm trees
+- Animated Jewish smiling sun (top corner)
+- AI chat with Clawstein (Gemini or OpenAI — cheap models)
+- Demo game coming soon: play as Lobster Clawstein roaming sandy beaches
 - Mobile-responsive design
 
 ## Setup
@@ -19,8 +19,11 @@ npm run dev
 
 ## Environment Variables (Vercel)
 
-Add `ANTHROPIC_API_KEY` in your Vercel project settings for real AI chat. Without it, the chat uses demo replies.
+- `GEMINI_API_KEY` or `GOOGLE_GENERATIVE_AI_API_KEY` — for cheap/free chat via Gemini 2.0 Flash
+- `OPENAI_API_KEY` — fallback for GPT-4o-mini
+
+Without either key, the chat uses demo replies.
 
 ## Deploy
 
-Deploy to Vercel—the `vercel.json` is configured. Set `ANTHROPIC_API_KEY` in Vercel env vars.
+Deploy to Vercel—the `vercel.json` is configured.

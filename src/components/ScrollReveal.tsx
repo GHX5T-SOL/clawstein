@@ -13,7 +13,7 @@ export default function ScrollReveal({ children, className = "" }: { children: R
       ([entry]) => {
         if (entry.isIntersecting) setVisible(true);
       },
-      { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
+      { threshold: 0.12 }
     );
     ob.observe(el);
     return () => ob.disconnect();

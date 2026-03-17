@@ -1,66 +1,342 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import {
+  BadgeCheck,
+  Copy,
+  ExternalLink,
+  MessageCircle,
+  Gamepad2,
+  ScanFace,
+} from "lucide-react";
 
-const CONTRACT_ADDRESS = "0x00000";
+const CONTRACT_ADDRESS =
+  process.env.NEXT_PUBLIC_CONTRACT_ADDRESS ?? "0x0000000";
+const SOLSCAN_URL = `https://solscan.io`;
 
-function CopyButton({ text }: { text: string }) {
-  const copy = useCallback(() => {
-    navigator.clipboard.writeText(text);
-  }, [text]);
+function CopyButton({
+  text,
+  onCopy,
+}: {
+  text: string;
+  onCopy: () => void;
+}) {
+  const copy = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(text);
+      onCopy();
+    } catch {
+      onCopy();
+    }
+  }, [text, onCopy]);
 
   return (
     <button
+      type="button"
       onClick={copy}
-      className="rounded-full bg-amber-400/90 px-6 py-3 font-mono text-sm font-bold text-gray-900 shadow-lg transition-all hover:bg-amber-300 hover:scale-105"
-      title="Copy contract address"
+      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs sm:text-sm transition focus:outline-none focus:ring-2 focus:ring-sand-300"
     >
-      {text}
+      <Copy className="text-base" />
+      Copy
     </button>
   );
 }
 
 export default function HeroSection() {
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
+  const [toastVisible, setToastVisible] = useState(false);
+  const [toastMessage, setToastMessage] = useState("Copied.");
+  const toastTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(
+    undefined
+  );
+
+  const showToast = useCallback((message: string) => {
+    setToastMessage(message);
+    setToastVisible(true);
+    if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+    toastTimerRef.current = setTimeout(() => setToastVisible(false), 1600);
+  }, []);
+
+  useEffect(() => {
+    const parallaxEls = document.querySelectorAll("[data-parallax]");
+    let lastScrollY = -1;
+    let rafId: number;
+
+    function loop() {
+      const y = window.scrollY ?? 0;
+      if (y !== lastScrollY) {
+        lastScrollY = y;
+        const clamped = Math.min(y, 700);
+        parallaxEls.forEach((el) => {
+          const speed = parseFloat(el.getAttribute("data-parallax") ?? "0");
+          (el as HTMLElement).style.transform = `translate3d(0, ${clamped * speed}px, 0)`;
+        });
+      }
+      rafId = requestAnimationFrame(loop);
+    }
+    rafId = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(rafId);
+  }, []);
 
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center px-6 pt-20">
-      <div className="flex flex-col items-center gap-6 text-center">
-        <div className="animate-fade-in flex flex-col items-center gap-4">
-          <Image
-            src="/clawstein.png"
-            alt="Clawstein"
-            width={200}
-            height={240}
-            className="drop-shadow-2xl"
-            priority
-          />
-          <h1 className="font-[family-name:var(--font-bungee)] text-6xl font-bold tracking-tight text-white drop-shadow-lg md:text-8xl">
-            $CLAWSTEIN
-          </h1>
-          <p className="max-w-md text-xl text-amber-100 md:text-2xl">
-            Your Jewish OpenClaw island buddy
-          </p>
+    <section className="relative overflow-hidden">
+      {/* Scene backdrop */}
+      <div className="absolute inset-0">
+        {/* Sky */}
+        <div className="absolute inset-0 bg-gradient-to-b from-sky-200 via-sky-50 to-sand-100" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_12%,rgba(255,214,153,0.90),rgba(255,214,153,0)_55%)] opacity-80" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(125,211,252,0.55),rgba(125,211,252,0)_52%)] opacity-70" />
+
+        {/* Sun */}
+        <div
+          className="absolute -top-10 right-6 sm:right-10 md:right-20 will-change-transform motion-safe:animate-[sunPulse_4.5s_ease-in-out_infinite]"
+          data-parallax="0.12"
+        >
+          <div className="relative h-36 w-36 sm:h-44 sm:w-44 rounded-full bg-gradient-to-br from-sand-100 via-sand-300 to-sand-500 shadow-glow-sun" />
+          <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.95),rgba(255,255,255,0)_55%)] blur-2xl opacity-80" />
         </div>
 
-        <div className="mt-4 flex flex-col items-center gap-4">
-          <CopyButton text={CONTRACT_ADDRESS} />
-          <div className="flex flex-wrap justify-center gap-3">
-            <button
-              onClick={() => scrollTo("chat")}
-              className="rounded-full bg-rose-500 px-8 py-3 font-semibold text-white shadow-lg transition-all hover:bg-rose-600 hover:scale-105"
+        {/* Clouds - layered, organic shapes with varied drift */}
+        <div
+          className="absolute top-10 left-0 right-0 will-change-transform pointer-events-none"
+          data-parallax="0.06"
+        >
+          <div className="relative h-48 w-full overflow-visible">
+            {/* Cloud 1 - large cumulus */}
+            <div className="absolute left-[-30%] top-4 motion-safe:animate-[cloudDrift_28s_linear_infinite]">
+              <div className="relative motion-safe:animate-[cloudBob_5s_ease-in-out_infinite]">
+                <div className="absolute h-14 w-28 rounded-[50%] bg-white/90 blur-[2px] -left-2 top-2" />
+                <div className="absolute h-18 w-32 rounded-[50%] bg-gradient-to-b from-white via-white/95 to-white/80 shadow-[0_8px_32px_rgba(255,255,255,0.4)] -left-4 top-0" />
+                <div className="absolute h-12 w-24 rounded-[50%] bg-white/85 -left-6 top-4" />
+                <div className="absolute h-10 w-20 rounded-[50%] bg-white/80 -left-2 top-8" />
+                <div className="absolute h-14 w-22 rounded-[50%] bg-white/75 left-4 top-6" />
+              </div>
+            </div>
+            {/* Cloud 2 - mid-layer */}
+            <div
+              className="absolute left-[-45%] top-14 motion-safe:animate-[cloudDrift_22s_linear_infinite]"
+              style={{ animationDelay: "-3s" }}
             >
-              Chat with Clawstein
-            </button>
-            <button
-              onClick={() => scrollTo("game")}
-              className="rounded-full border-2 border-amber-400 bg-amber-400/20 px-8 py-3 font-semibold text-amber-100 backdrop-blur transition-all hover:bg-amber-400/40 hover:scale-105"
+              <div className="relative motion-safe:animate-[cloudBob_4.2s_ease-in-out_infinite]">
+                <div className="absolute h-11 w-24 rounded-[50%] bg-gradient-to-b from-white/95 to-white/75 -left-3 top-1" />
+                <div className="absolute h-15 w-28 rounded-[50%] bg-white/90 -left-5 top-0 shadow-[0_6px_24px_rgba(255,255,255,0.3)]" />
+                <div className="absolute h-9 w-18 rounded-[50%] bg-white/80 left-2 top-5" />
+              </div>
+            </div>
+            {/* Cloud 3 - smaller, faster */}
+            <div
+              className="absolute left-[-35%] top-6 motion-safe:animate-[cloudDrift_18s_linear_infinite]"
+              style={{ animationDelay: "-6s" }}
             >
-              Play Demo
-            </button>
+              <div className="relative motion-safe:animate-[cloudBob_3.8s_ease-in-out_infinite]">
+                <div className="absolute h-10 w-20 rounded-[50%] bg-gradient-to-b from-white/92 to-white/78 -left-2 top-0" />
+                <div className="absolute h-12 w-22 rounded-[50%] bg-white/85 -left-4 top-2" />
+                <div className="absolute h-8 w-14 rounded-[50%] bg-white/75 left-2 top-4" />
+              </div>
+            </div>
+            {/* Cloud 4 - wispy high cloud */}
+            <div
+              className="absolute left-[-55%] top-0 motion-safe:animate-[cloudDrift_35s_linear_infinite]"
+              style={{ animationDelay: "-10s" }}
+            >
+              <div className="relative motion-safe:animate-[cloudBob_6s_ease-in-out_infinite] opacity-90">
+                <div className="absolute h-8 w-24 rounded-[50%] bg-white/70 -left-4 top-2" />
+                <div className="absolute h-10 w-18 rounded-[50%] bg-white/65 left-0 top-0" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Ocean */}
+        <div className="absolute inset-x-0 bottom-0 top-[46%] bg-gradient-to-b from-ocean-400 to-ocean-700" />
+
+        {/* Wave overlays */}
+        <div
+          className="absolute inset-x-0 bottom-0 top-[46%] opacity-100 will-change-transform"
+          data-parallax="0.03"
+        >
+          <div className="absolute inset-x-0 -top-2 h-44 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.22),rgba(255,255,255,0)_55%)] opacity-70" />
+          <div className="absolute inset-x-0 top-10 h-40 bg-wave bg-repeat-x motion-safe:animate-[waveMove_10s_linear_infinite] bg-[length:1440px_120px]" />
+          <div className="absolute inset-x-0 top-16 h-44 bg-wave2 bg-repeat-x motion-safe:animate-[waveMove_7s_linear_infinite] bg-[length:1440px_120px]" />
+          <div className="absolute inset-0 bg-sparkle bg-repeat opacity-60 mix-blend-overlay motion-safe:animate-[sparkleDrift_6.5s_ease-in-out_infinite] bg-[length:180px_180px]" />
+          <div className="absolute inset-x-0 top-24 h-56 bg-gradient-to-b from-white/12 to-transparent" />
+        </div>
+
+        {/* Shoreline foam */}
+        <div
+          className="absolute inset-x-0 top-[46%] h-24 bg-gradient-to-b from-white/45 via-white/15 to-transparent blur-[1px] will-change-transform"
+          data-parallax="0.02"
+        />
+      </div>
+
+      {/* Content */}
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 lg:pt-16 pb-10 sm:pb-14">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-end">
+          {/* Left copy */}
+          <div className="lg:col-span-7">
+            {/* Contract badge */}
+            <div
+              id="contract"
+              className="inline-flex items-center gap-3 rounded-2xl bg-slate-950/85 border border-white/10 px-4 py-3 shadow-soft-xl"
+            >
+              <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-claw-400 to-claw-700 shadow-glow-contract flex items-center justify-center">
+                <BadgeCheck className="text-white text-xl" />
+              </div>
+              <div className="min-w-0">
+                <div className="text-xs text-white/60">Contract address</div>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span
+                    id="contract-text"
+                    className="font-mono text-white text-sm sm:text-base tracking-tight"
+                  >
+                    {CONTRACT_ADDRESS}
+                  </span>
+                  <CopyButton
+                    text={CONTRACT_ADDRESS}
+                    onCopy={() =>
+                      showToast("Contract copied: " + CONTRACT_ADDRESS)
+                    }
+                  />
+                  <a
+                    id="solscan-link"
+                    href={SOLSCAN_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-gradient-to-b from-sand-200 to-sand-400 text-slate-900 text-sm font-medium hover:brightness-[1.02] transition"
+                  >
+                    <ExternalLink className="text-base" />
+                    View on Solscan
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <h1 className="mt-7 font-display tracking-tight text-white text-4xl sm:text-5xl lg:text-6xl leading-[1.05]">
+              <span className="text-white">$CLAWSTEIN</span>
+              <span className="block text-sand-200">
+                Tokenized OpenClaw Agent on Pump Fun
+              </span>
+            </h1>
+
+            <p className="mt-4 text-white/80 text-base sm:text-lg max-w-xl">
+              <span className="font-medium text-white">
+                Your personal OpenClaw agent;
+              </span>
+              <span className="text-white/90">
+                {" "}
+                Jewish Banker & entertainment guide.
+              </span>
+              <span className="block mt-2 text-white/70">
+                Chat with Clawstein, then get ready for the beach hunt.
+              </span>
+            </p>
+
+            <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:items-center">
+              <a
+                id="hero-chat-cta"
+                href="#chat"
+                className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-2xl bg-gradient-to-b from-claw-300 to-claw-600 text-slate-950 font-semibold shadow-soft-xl hover:brightness-[1.03] transition focus:outline-none focus:ring-2 focus:ring-sand-200"
+              >
+                <MessageCircle className="text-xl" />
+                Talk to Clawstein
+              </a>
+              <a
+                id="hero-game-cta"
+                href="#game"
+                className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-2xl bg-slate-950/85 border border-white/10 text-white font-semibold shadow-soft-xl hover:bg-white/10 transition focus:outline-none focus:ring-2 focus:ring-sand-200"
+              >
+                <Gamepad2 className="text-xl" />
+                Mini-game preview
+              </a>
+            </div>
+          </div>
+
+          {/* Right: Island + Clawstein */}
+          <div className="lg:col-span-5 relative">
+            <div className="relative h-[520px] sm:h-[560px] lg:h-[620px]">
+              {/* Island base - sand-colored beach island */}
+              <div className="absolute inset-x-2 bottom-10 sm:bottom-12">
+                <div className="relative">
+                  <div className="absolute inset-x-10 -bottom-5 h-12 rounded-[999px] bg-amber-900/25 blur-2xl" />
+                  <div className="h-40 sm:h-44 w-full rounded-[999px] bg-gradient-to-b from-[#fef3c7] via-[#fde68a] to-[#f59e0b] shadow-soft-xl shadow-inner bg-sand-texture bg-[length:220px_220px]" />
+                  <div className="absolute inset-x-10 -top-2 h-10 rounded-[999px] bg-gradient-to-b from-white/50 to-transparent blur-sm" />
+                  <div className="absolute inset-0 rounded-[999px] bg-[radial-gradient(circle_at_55%_35%,rgba(255,255,255,0.35),rgba(255,255,255,0)_55%)]" />
+                  <div className="absolute inset-0 rounded-[999px] bg-gradient-to-r from-white/0 via-white/15 to-white/0" />
+                </div>
+              </div>
+
+              {/* Palm tree image */}
+              <div className="absolute left-2 sm:left-6 bottom-20 sm:bottom-24">
+                <Image
+                  src="/palm_tree.png"
+                  alt="Palm tree"
+                  width={140}
+                  height={200}
+                  className="h-44 sm:h-52 w-auto drop-shadow-[0_12px_24px_rgba(2,6,23,0.3)] select-none object-contain object-bottom"
+                  draggable={false}
+                />
+              </div>
+
+              {/* Clawstein image */}
+              <div className="absolute inset-x-0 bottom-10 sm:bottom-12 flex justify-center lg:justify-end">
+                <div className="relative w-[320px] sm:w-[360px] lg:w-[380px] motion-safe:animate-[floaty_5.5s_ease-in-out_infinite]">
+                  <div className="absolute -inset-6 rounded-[36px] bg-gradient-to-b from-slate-950/30 to-slate-950/0 blur-xl" />
+                  <Image
+                    src="/clawstein_standing.png"
+                    alt="Clawstein standing on the beach"
+                    width={380}
+                    height={520}
+                    className="relative w-full h-auto drop-shadow-[0_40px_80px_rgba(2,6,23,0.55)] select-none"
+                    draggable={false}
+                    priority
+                  />
+                </div>
+              </div>
+
+              {/* OpenClaw Mode card */}
+              <div className="absolute right-2 sm:right-6 top-10 sm:top-14">
+                <div className="rounded-2xl bg-slate-950/80 border border-white/10 px-4 py-3 shadow-soft-xl">
+                  <div className="flex items-center gap-2">
+                    <ScanFace className="text-sand-200 text-lg" />
+                    <div className="text-white font-semibold text-sm">
+                      OpenClaw Mode
+                    </div>
+                  </div>
+                  <div className="mt-1 text-xs text-white/70">
+                    Witty, banker-sharp, beach-ready.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile Solscan CTA */}
+            <div className="mt-5 sm:hidden">
+              <a
+                id="solscan-link-mobile"
+                href={SOLSCAN_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex w-full items-center justify-center gap-2 h-12 px-5 rounded-2xl bg-gradient-to-b from-sand-200 to-sand-400 text-slate-900 font-semibold shadow-soft-xl"
+              >
+                <ExternalLink className="text-xl" />
+                View on Solscan
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Toast */}
+        <div className="mt-6">
+          <div
+            id="toast"
+            className={`inline-flex items-center gap-2 rounded-2xl bg-slate-950/90 border border-white/10 px-4 py-3 text-white shadow-soft-xl ${
+              toastVisible ? "animate-[fadeUp_0.7s_ease-out_both]" : "hidden"
+            }`}
+          >
+            <BadgeCheck className="text-sand-200 text-lg" />
+            <span id="toast-text" className="text-sm">
+              {toastMessage}
+            </span>
           </div>
         </div>
       </div>

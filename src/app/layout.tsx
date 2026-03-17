@@ -1,28 +1,13 @@
 import type { Metadata } from "next";
-import { Bungee, Nunito } from "next/font/google";
-import { Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const bungee = Bungee({
-  weight: "400",
-  variable: "--font-bungee",
-  subsets: ["latin"],
-});
-
-const nunito = Nunito({
-  variable: "--font-nunito",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "$CLAWSTEIN | Your Jewish OpenClaw Island Buddy",
+  title: "$CLAWSTEIN | Your Personal Jewish Banker & Entertainment Guide",
   description:
-    "$CLAWSTEIN - The Pump.fun token with a lobster mascot. Chat with Clawstein, play the demo game, and join the island.",
+    "$CLAWSTEIN - OpenClaw agent. The Pump.fun token with a lobster mascot. Chat with Clawstein, your personal Jewish Banker & entertainment guide.",
+  icons: {
+    icon: "/clawstein.png",
+  },
 };
 
 export default function RootLayout({
@@ -32,9 +17,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${bungee.variable} ${nunito.variable} ${geistMono.variable} font-sans antialiased`}
-      >
+      <head>
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,500&f[]=satoshi@400,500,700&f[]=jetbrains-mono@400,600&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="min-h-screen font-body bg-slate-950 text-slate-50 antialiased">
         {children}
       </body>
     </html>

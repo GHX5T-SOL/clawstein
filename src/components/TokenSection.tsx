@@ -33,7 +33,7 @@ export default function TokenSection() {
             <CopyButton text={CONTRACT_ADDRESS} />
           </div>
           <p className="mb-6 text-center text-amber-200/80">
-            Full game coming soon! Winners win tokens.
+            OpenClaw agent token. Demo game coming soon — play as Lobster Clawstein on the beach. Winners win tokens.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
