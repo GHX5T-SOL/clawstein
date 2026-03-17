@@ -107,7 +107,7 @@ export default function HeroSection() {
               alt=""
               width={1920}
               height={400}
-              className="h-full w-auto min-w-full object-cover object-top opacity-90"
+              className="h-full w-auto min-w-full object-contain opacity-90"
               draggable={false}
               aria-hidden
             />
@@ -116,7 +116,7 @@ export default function HeroSection() {
               alt=""
               width={1920}
               height={400}
-              className="h-full w-auto min-w-full object-cover object-top opacity-90 flex-shrink-0"
+              className="h-full w-auto min-w-full object-contain opacity-90 flex-shrink-0"
               draggable={false}
               aria-hidden
             />
