@@ -254,31 +254,35 @@ export default function HeroSection() {
           {/* Right: Island + Clawstein */}
           <div className="lg:col-span-5 relative">
             <div className="relative h-[520px] sm:h-[560px] lg:h-[620px]">
-              {/* Island base - sand-colored beach island */}
-              <div className="absolute inset-x-2 bottom-10 sm:bottom-12">
-                <div className="relative">
-                  <div className="absolute inset-x-10 -bottom-5 h-12 rounded-[999px] bg-amber-900/25 blur-2xl" />
-                  <div className="h-40 sm:h-44 w-full rounded-[999px] bg-gradient-to-b from-[#fef3c7] via-[#fde68a] to-[#f59e0b] shadow-soft-xl shadow-inner bg-sand-texture bg-[length:220px_220px]" />
-                  <div className="absolute inset-x-10 -top-2 h-10 rounded-[999px] bg-gradient-to-b from-white/50 to-transparent blur-sm" />
-                  <div className="absolute inset-0 rounded-[999px] bg-[radial-gradient(circle_at_55%_35%,rgba(255,255,255,0.35),rgba(255,255,255,0)_55%)]" />
-                  <div className="absolute inset-0 rounded-[999px] bg-gradient-to-r from-white/0 via-white/15 to-white/0" />
+              {/* Island image - sand island base */}
+              <div className="absolute inset-x-0 bottom-10 sm:bottom-12 flex justify-center lg:justify-end z-0">
+                <div className="relative w-full max-w-[420px] sm:max-w-[460px] lg:max-w-[500px]">
+                  <Image
+                    src="/island.png"
+                    alt="Sand island"
+                    width={500}
+                    height={280}
+                    className="w-full h-auto drop-shadow-[0_20px_60px_rgba(2,6,23,0.4)] select-none object-contain object-bottom"
+                    draggable={false}
+                    priority
+                  />
                 </div>
               </div>
 
-              {/* Palm tree image */}
-              <div className="absolute left-2 sm:left-6 bottom-20 sm:bottom-24">
+              {/* Palm tree - larger */}
+              <div className="absolute left-0 sm:left-4 bottom-16 sm:bottom-20 lg:bottom-24 z-10">
                 <Image
                   src="/palm_tree.png"
                   alt="Palm tree"
-                  width={140}
-                  height={200}
-                  className="h-44 sm:h-52 w-auto drop-shadow-[0_12px_24px_rgba(2,6,23,0.3)] select-none object-contain object-bottom"
+                  width={220}
+                  height={320}
+                  className="h-64 sm:h-80 lg:h-96 w-auto drop-shadow-[0_16px_32px_rgba(2,6,23,0.35)] select-none object-contain object-bottom"
                   draggable={false}
                 />
               </div>
 
-              {/* Clawstein image */}
-              <div className="absolute inset-x-0 bottom-10 sm:bottom-12 flex justify-center lg:justify-end">
+              {/* Clawstein standing on island */}
+              <div className="absolute inset-x-0 bottom-10 sm:bottom-12 flex justify-center lg:justify-end z-20">
                 <div className="relative w-[320px] sm:w-[360px] lg:w-[380px] motion-safe:animate-[floaty_5.5s_ease-in-out_infinite]">
                   <div className="absolute -inset-6 rounded-[36px] bg-gradient-to-b from-slate-950/30 to-slate-950/0 blur-xl" />
                   <Image
