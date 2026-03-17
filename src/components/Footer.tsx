@@ -3,7 +3,7 @@
 import { Fish, Twitter, Mail, ExternalLink } from "lucide-react";
 
 const CONTRACT_ADDRESS =
-  process.env.NEXT_PUBLIC_CONTRACT_ADDRESS ?? "0x0000000";
+  process.env.NEXT_PUBLIC_CONTRACT_ADDRESS ?? "YDCmRzntPy66k7biaYheudv7Q46wNKgdbBVaubwpump";
 
 export default function Footer() {
   const year = new Date().getFullYear();

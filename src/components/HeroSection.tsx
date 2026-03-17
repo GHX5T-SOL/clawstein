@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 
 const CONTRACT_ADDRESS =
-  process.env.NEXT_PUBLIC_CONTRACT_ADDRESS ?? "0x0000000";
+  process.env.NEXT_PUBLIC_CONTRACT_ADDRESS ?? "YDCmRzntPy66k7biaYheudv7Q46wNKgdbBVaubwpump";
 const SOLSCAN_URL = `https://solscan.io`;
 
 function CopyButton({
