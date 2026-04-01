@@ -51,9 +51,9 @@ function ClawsteinMascot() {
   return (
     <Float speed={2} rotationIntensity={0.2} floatIntensity={0.5}>
       <group position={[0, 2, 2]}>
+        {/* eslint-disable-next-line jsx-a11y/alt-text */}
         <Image
           url="/clawstein.png"
-          alt=""
           scale={[2.5, 3]}
           position={[0, 0, 0]}
         />
