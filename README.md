@@ -1,13 +1,13 @@
-# $CLAWSTEIN
+# $wifclaw
 
-Your personal Jewish Banker & entertainment guide. An OpenClaw agent. A Pump.fun token landing page with animated island visuals, AI chat, and a coming-soon beach game.
+dogwifclaw — a happy, cheerful beach buddy offering solace and comfort. A token landing page with animated island visuals, a cozy AI chat, and a coming-soon beach mini-game preview.
 
 ## Features
 
 - Layered animated background: sky, clouds, ocean waves, sand, palm trees
-- Animated Jewish smiling sun (top corner)
-- AI chat with Clawstein (Gemini or OpenAI — cheap models)
-- Demo game coming soon: play as Lobster Clawstein roaming sandy beaches
+- Animated smiling sun (top corner)
+- AI chat with dogwifclaw (Gemini or OpenAI — cheap models)
+- Demo mini-game preview coming soon: beachy vibes + leaderboard
 - Mobile-responsive design
 
 ## Setup

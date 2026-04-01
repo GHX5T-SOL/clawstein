@@ -3,7 +3,7 @@
 import { Fish, Twitter, Mail, ExternalLink } from "lucide-react";
 
 const CONTRACT_ADDRESS =
-  process.env.NEXT_PUBLIC_CONTRACT_ADDRESS ?? "YDCmRzntPy66k7biaYheudv7Q46wNKgdbBVaubwpump";
+  process.env.NEXT_PUBLIC_CONTRACT_ADDRESS ?? "0x000000";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -19,17 +19,16 @@ export default function Footer() {
               </div>
               <div>
                 <div className="font-display tracking-tight text-white text-lg">
-                  $CLAWSTEIN
+                  $wifclaw
                 </div>
                 <div className="text-xs text-white/60">
-                  Your personal OpenClaw agent; Jewish Banker & entertainment
-                  guide
+                  dogwifclaw — your happy beach buddy for solace and comfort
                 </div>
               </div>
             </div>
             <p className="mt-4 text-sm text-white/70 max-w-md">
-              Built as a one-page experience: immersive island scene, AI chat UI,
-              and the upcoming Lobster Beach Dash mini-game.
+              Built as a one-page beach escape: immersive island scene, a cozy
+              AI chat, and a coming-soon mini-game preview.
             </p>
           </div>
 
@@ -37,16 +36,16 @@ export default function Footer() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <a
                 id="footer-twitter-link"
-                href="https://x.com/ghostkid404"
+                href="https://x.com/dogwifclaw_ai"
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-2xl bg-white/5 border border-white/10 px-4 py-3 text-white hover:bg-white/10 transition"
               >
                 <div className="flex items-center gap-2">
                   <Twitter className="text-sand-200 text-lg" />
-                  <div className="font-semibold">Twitter</div>
+                  <div className="font-semibold">X</div>
                 </div>
-                <div className="mt-1 text-xs text-white/60">@ghostkid404</div>
+                <div className="mt-1 text-xs text-white/60">@dogwifclaw_ai</div>
               </a>
               <a
                 id="footer-email-link"
@@ -72,13 +71,15 @@ export default function Footer() {
                   <ExternalLink className="text-sand-200 text-lg" />
                   <div className="font-semibold">Contract</div>
                 </div>
-                <div className="mt-1 text-xs text-white/60">View on Solscan</div>
+                <div className="mt-1 text-xs text-white/60">
+                  Explorer link (placeholder)
+                </div>
               </a>
             </div>
 
             <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs text-white/50">
               <div>
-                © {year} $CLAWSTEIN. Island operations online.
+                © {year} $wifclaw. Beach vibes online.
               </div>
               <div className="font-mono text-[11px] sm:text-xs break-all sm:break-normal">
                 Contract: {CONTRACT_ADDRESS}

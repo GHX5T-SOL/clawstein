@@ -31,11 +31,11 @@ function getMessageText(m: {
 }
 
 const DEMO_REPLIES = [
-  "Alright, listen: I'm not your average chatbot — I'm the banker with beach access. Ask clean questions, get crisp answers.",
-  "You want entertainment? I've got three options: (1) sunset playlist, (2) beach bar roulette, (3) harmless chaos. Choose wisely.",
-  "$CLAWSTEIN is simple: personality-driven meme energy, token-gated gameplay, and a leaderboard that makes grown wallets sweat.",
-  "Contract's right there — copy it like it's confidential. Then we talk strategy and snack budgets.",
-  "On this island, we diversify: a little music, a little mischief, and a strict 'no paper hands near the shoreline' policy.",
+  "Hey friend. Take a breath — you're on the beach with me now. What do you need today?",
+  "I’ve got sunshine, calm waves, and a playlist that feels like a soft reset. Want cozy, hype, or mellow?",
+  "$wifclaw is a vibe-first meme token world — beach energy, comfort, and a little playful chaos (the wholesome kind).",
+  "Contract address is a placeholder for now (`0x000000`). When it’s real, you’ll see it front and center.",
+  "No pressure here. We do gentle vibes, steady breaths, and tiny wins — one wave at a time.",
 ];
 
 const STARTER_MESSAGES = [
@@ -43,7 +43,7 @@ const STARTER_MESSAGES = [
     id: "start-1",
     role: "assistant" as const,
     content:
-      "Welcome to the island. Drop a question and I'll run the numbers — and the nightlife.",
+      "Welcome to the beach. Ask me anything — I’m here for comfort, calm vibes, and a little fun.",
   },
   {
     id: "start-2",
@@ -54,7 +54,7 @@ const STARTER_MESSAGES = [
     id: "start-3",
     role: "assistant" as const,
     content:
-      "I'm your personal OpenClaw agent — part banker, part entertainment guide. I can't promise financial advice… but I can promise excellent taste and sharper pincers.",
+      "I’m dogwifclaw — your happy beach buddy. I’m not here for financial advice; I’m here to help you feel better and keep the vibes sunny.",
   },
 ];
 
@@ -63,13 +63,13 @@ type ChatMessage = { id: string; role: "user" | "assistant"; content: string };
 function generateClawsteinReply(userText: string): string {
   const t = userText.toLowerCase();
   if (t.includes("contract"))
-    return "Contract? Already displayed. Copy it. Guard it. Then go enjoy the sun — responsibly.";
+    return "Contract address is a placeholder for now: `0x000000`. When it’s live, we’ll update it everywhere.";
   if (t.includes("wallet") || t.includes("solana"))
-    return "Game will require a Solana wallet connected. No wallet, no dash. That's island law.";
+    return "Wallet stuff can wait — the mini-game is just a preview for now. For today: beach vibes and good company.";
   if (t.includes("tokens") || t.includes("1m") || t.includes("1,000,000"))
-    return "Minimum holding: 1,000,000 $CLAWSTEIN to play. I don't make the tides — I just enforce them.";
+    return "No gatekeeping today. If you’re here, you belong. Want a quick $wifclaw vibe rundown instead?";
   if (t.includes("plan") || t.includes("entertainment") || t.includes("tonight"))
-    return "Tonight's plan: sunset → snacks → one bold playlist → one questionable decision (tasteful). I'll curate.";
+    return "Tonight’s gentle plan: sunset → warm snack → favorite song → a tiny happy thing. Want it cozy, hype, or mellow?";
   return DEMO_REPLIES[Math.floor(Math.random() * DEMO_REPLIES.length)];
 }
 
@@ -88,17 +88,16 @@ export default function ClawsteinChat() {
     onError: () => setUseDemo(true),
   });
 
-  useEffect(() => {
-    if (status === "error") setUseDemo(true);
-  }, [status]);
-
-  const allMessages = useDemo
-    ? [...STARTER_MESSAGES, ...demoMessages]
-    : [...STARTER_MESSAGES, ...messages.map((m) => ({
-        id: m.id,
-        role: m.role as "user" | "assistant",
-        content: getMessageText(m),
-      }))];
+  const allMessages = useMemo(() => {
+    const normalized = messages.map((m) => ({
+      id: m.id,
+      role: m.role as "user" | "assistant",
+      content: getMessageText(m),
+    }));
+    return useDemo
+      ? [...STARTER_MESSAGES, ...demoMessages]
+      : [...STARTER_MESSAGES, ...normalized];
+  }, [demoMessages, messages, useDemo]);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({
@@ -180,15 +179,15 @@ export default function ClawsteinChat() {
           <div className="lg:col-span-5">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-3 py-1.5 text-white/80 text-xs">
               <Shield className="text-sand-200" />
-              Clawstein Agent Chat
+              dogwifclaw Chat
             </div>
             <h2 className="mt-4 font-display tracking-tight text-white text-3xl sm:text-4xl">
-              Chat with Clawstein
+              Chat with dogwifclaw
             </h2>
             <p className="mt-3 text-white/75 text-base">
-              Ask for beach intel, entertainment picks, or a cold-blooded market
-              take. Clawstein knows he&apos;s the Jewish OpenClaw agent and mascot
-              for the $CLAWSTEIN Pump Fun token.
+              Ask for a beachy pep-talk, comfort, a vibe check, or a little
+              lighthearted fun. dogwifclaw is here to offer solace and keep the
+              day sunny — with $wifclaw lore on the side.
             </p>
 
             <div className="mt-6 rounded-3xl bg-white/5 border border-white/10 p-5 shadow-soft-xl">
@@ -197,10 +196,10 @@ export default function ClawsteinChat() {
                   <Bot className="text-white text-xl" />
                 </div>
                 <div className="min-w-0">
-                  <div className="text-white font-semibold">Clawstein</div>
+                  <div className="text-white font-semibold">dogwifclaw</div>
                   <div className="text-white/70 text-sm">
-                    "I'm your OpenClaw agent. I balance books, pick bangers, and
-                    pinch troublemakers."
+                    I’m your beach buddy. I bring comfort, calm waves, and a
+                    little sparkle when you need it.
                   </div>
                 </div>
               </div>
@@ -216,21 +215,21 @@ export default function ClawsteinChat() {
                 >
                   <div className="text-sm font-semibold">Entertainment plan</div>
                   <div className="mt-1 text-xs text-white/65">
-                    "What's the vibe tonight?"
+                    What&apos;s the vibe tonight?
                   </div>
                 </button>
                 <button
                   type="button"
                   onClick={() =>
                     handleSuggestion(
-                      "Explain $CLAWSTEIN like I'm new, but make it spicy."
+                      "Explain $wifclaw like I'm new — keep it friendly and simple."
                     )
                   }
                   className="chat-suggestion text-left rounded-2xl bg-slate-950/70 border border-white/10 p-4 text-white hover:bg-white/10 transition focus:outline-none focus:ring-2 focus:ring-sand-200"
                 >
                   <div className="text-sm font-semibold">Token rundown</div>
                   <div className="mt-1 text-xs text-white/65">
-                    "Sell me the legend."
+                    Sell me the legend.
                   </div>
                 </button>
               </div>
@@ -292,7 +291,7 @@ export default function ClawsteinChat() {
                           <Bot className="text-white text-lg" />
                         </div>
                         <div className="max-w-[85%]">
-                          <div className="text-xs text-white/55">Clawstein</div>
+                          <div className="text-xs text-white/55">dogwifclaw</div>
                           <div className="mt-1 rounded-2xl rounded-tl-sm bg-slate-950/70 border border-white/10 p-4 text-white">
                             {m.content}
                           </div>
@@ -307,7 +306,7 @@ export default function ClawsteinChat() {
                       <Bot className="text-white text-lg" />
                     </div>
                     <div className="max-w-[85%]">
-                      <div className="text-xs text-white/55">Clawstein</div>
+                      <div className="text-xs text-white/55">dogwifclaw</div>
                       <div className="mt-1 rounded-2xl rounded-tl-sm bg-slate-950/70 border border-white/10 p-4 text-white">
                         <span className="inline-flex items-center gap-2">
                           <span className="inline-block h-2 w-2 rounded-full bg-white/60 animate-pulse" />
@@ -342,7 +341,7 @@ export default function ClawsteinChat() {
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         className="w-full resize-none rounded-2xl bg-white/10 border border-white/10 px-4 py-3 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-sand-200"
-                        placeholder="Ask Clawstein for beach intel…"
+                        placeholder="Ask dogwifclaw for comfort or beach vibes…"
                         disabled={isLoading}
                       />
                       <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-white/35 text-xs">

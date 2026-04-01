@@ -32,10 +32,10 @@ export default function Header() {
             </div>
             <div>
               <div className="font-display tracking-tight text-white text-base sm:text-lg">
-                $CLAWSTEIN
+                $wifclaw
               </div>
               <div className="text-[11px] sm:text-xs text-white/70 leading-tight hidden sm:block">
-                OpenClaw agent • banker vibes • beach mischief
+                dogwifclaw • cheerful beach buddy • solace + comfort
               </div>
             </div>
           </div>
@@ -64,11 +64,11 @@ export default function Header() {
           <div className="flex items-center gap-2">
             <a
               id="header-twitter-link"
-              href="https://x.com/ghostkid404"
+              href="https://x.com/dogwifclaw_ai"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-white/10 hover:bg-white/15 text-white transition"
-              aria-label="Twitter"
+              aria-label="X"
             >
               <Twitter className="text-xl" />
             </a>

@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 
 const CONTRACT_ADDRESS =
-  process.env.NEXT_PUBLIC_CONTRACT_ADDRESS ?? "YDCmRzntPy66k7biaYheudv7Q46wNKgdbBVaubwpump";
+  process.env.NEXT_PUBLIC_CONTRACT_ADDRESS ?? "0x000000";
 const SOLSCAN_URL = `https://solscan.io`;
 
 function CopyButton({
@@ -181,29 +181,30 @@ export default function HeroSection() {
                     className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-gradient-to-b from-sand-200 to-sand-400 text-slate-900 text-sm font-medium hover:brightness-[1.02] transition"
                   >
                     <ExternalLink className="text-base" />
-                    View on Solscan
+                    Explorer (placeholder)
                   </a>
                 </div>
               </div>
             </div>
 
             <h1 className="mt-7 font-display tracking-tight text-white text-4xl sm:text-5xl lg:text-6xl leading-[1.05]">
-              <span className="text-white">$CLAWSTEIN</span>
+              <span className="text-white">$wifclaw</span>
               <span className="block text-sand-200">
-                Tokenized OpenClaw Agent on Pump Fun
+                dogwifclaw — your cheerful beach buddy
               </span>
             </h1>
 
             <p className="mt-4 text-white/80 text-base sm:text-lg max-w-xl">
               <span className="font-medium text-white">
-                Your personal OpenClaw agent;
+                A warm wave of comfort,
               </span>
               <span className="text-white/90">
                 {" "}
-                Jewish Banker & entertainment guide.
+                sunshine, and lighthearted fun.
               </span>
               <span className="block mt-2 text-white/70">
-                Chat with Clawstein, then get ready for the beach hunt.
+                Chat with dogwifclaw — get some solace, a beachy pep-talk, or a
+                vibe check.
               </span>
             </p>
 
@@ -214,7 +215,7 @@ export default function HeroSection() {
                 className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-2xl bg-gradient-to-b from-claw-300 to-claw-600 text-slate-950 font-semibold shadow-soft-xl hover:brightness-[1.03] transition focus:outline-none focus:ring-2 focus:ring-sand-200"
               >
                 <MessageCircle className="text-xl" />
-                Talk to Clawstein
+                Talk to dogwifclaw
               </a>
               <a
                 id="hero-game-cta"
@@ -227,7 +228,7 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right: Island + Clawstein */}
+          {/* Right: Island + mascot */}
           <div className="lg:col-span-5 relative">
             <div className="relative h-[400px] sm:h-[520px] md:h-[560px] lg:h-[620px]">
               {/* Island image - sand island base */}
@@ -257,13 +258,13 @@ export default function HeroSection() {
                 />
               </div>
 
-              {/* Clawstein standing on island */}
+              {/* Mascot standing on island */}
               <div className="absolute inset-x-0 bottom-8 sm:bottom-10 lg:bottom-12 flex justify-center lg:justify-end z-20">
                 <div className="relative w-[260px] sm:w-[320px] md:w-[360px] lg:w-[380px] motion-safe:animate-[floaty_5.5s_ease-in-out_infinite]">
                   <div className="absolute -inset-6 rounded-[36px] bg-gradient-to-b from-slate-950/30 to-slate-950/0 blur-xl" />
                   <Image
                     src="/clawstein_standing.png"
-                    alt="Clawstein standing on the beach"
+                    alt="dogwifclaw on the beach"
                     width={380}
                     height={520}
                     className="relative w-full h-auto drop-shadow-[0_40px_80px_rgba(2,6,23,0.55)] select-none"
@@ -273,17 +274,17 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              {/* OpenClaw Mode card */}
+              {/* Mode card */}
               <div className="absolute right-2 sm:right-6 top-10 sm:top-14">
                 <div className="rounded-2xl bg-slate-950/80 border border-white/10 px-4 py-3 shadow-soft-xl">
                   <div className="flex items-center gap-2">
                     <ScanFace className="text-sand-200 text-lg" />
                     <div className="text-white font-semibold text-sm">
-                      OpenClaw Mode
+                      Beach Buddy Mode
                     </div>
                   </div>
                   <div className="mt-1 text-xs text-white/70">
-                    Witty, banker-sharp, beach-ready.
+                    Cheerful, cozy, beach-ready.
                   </div>
                 </div>
               </div>
@@ -299,7 +300,7 @@ export default function HeroSection() {
                 className="inline-flex w-full items-center justify-center gap-2 h-12 px-5 rounded-2xl bg-gradient-to-b from-sand-200 to-sand-400 text-slate-900 font-semibold shadow-soft-xl"
               >
                 <ExternalLink className="text-xl" />
-                View on Solscan
+                Explorer (placeholder)
               </a>
             </div>
           </div>

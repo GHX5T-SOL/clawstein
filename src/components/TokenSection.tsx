@@ -2,7 +2,7 @@
 
 import { useCallback } from "react";
 
-const CONTRACT_ADDRESS = "0x00000";
+const CONTRACT_ADDRESS = "0x000000";
 
 function CopyButton({ text }: { text: string }) {
   const copy = useCallback(() => {
@@ -26,14 +26,15 @@ export default function TokenSection() {
       <div className="mx-auto max-w-2xl px-6">
         <div className="rounded-2xl border-2 border-amber-400/50 bg-sky-900/80 p-8 backdrop-blur">
           <h2 className="mb-6 text-center font-[family-name:var(--font-bungee)] text-3xl text-amber-200">
-            $CLAWSTEIN Token
+            $wifclaw Token
           </h2>
           <div className="mb-6 flex flex-col items-center gap-4">
             <p className="text-center text-amber-100">Contract Address</p>
             <CopyButton text={CONTRACT_ADDRESS} />
           </div>
           <p className="mb-6 text-center text-amber-200/80">
-            OpenClaw agent token. Demo game coming soon — play as Lobster Clawstein on the beach. Winners win tokens.
+            dogwifclaw token. A cozy beach vibe with a fun mini-game preview.
+            Contract address is a placeholder for now.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a

@@ -75,13 +75,14 @@ export default function ClawsteinGame() {
               Coming soon
             </div>
             <h2 className="mt-4 font-display tracking-tight text-white text-3xl sm:text-4xl">
-              Lobster Beach Dash
+              Beach Buddy Dash
             </h2>
             <p className="mt-3 text-white/75 max-w-2xl">
-              Play as a lobster. Catch beachgoers. Climb the leaderboard.
+              A tiny, beachy mini-game preview. Zip around, collect good vibes,
+              and climb the friendly leaderboard.
               <span className="text-white/60">
                 {" "}
-                Wallet-connected, token-gated chaos.
+                No wallet needed for the preview.
               </span>
             </p>
           </div>
@@ -93,7 +94,7 @@ export default function ClawsteinGame() {
               disabled
             >
               <Plug className="text-xl" />
-              Connect Solana Wallet (soon)
+              Optional wallet perks (soon)
             </button>
           </div>
         </div>
@@ -219,7 +220,7 @@ export default function ClawsteinGame() {
                     <div className="font-semibold">Play as: Lobster</div>
                   </div>
                   <div className="mt-1 text-xs text-white/70">
-                    Pinch & dash. Fast movement, silly collisions.
+                    Dash & drift. Fast movement, silly collisions.
                   </div>
                 </div>
                 <div className="rounded-2xl bg-slate-950/70 border border-white/10 p-4">
@@ -228,7 +229,7 @@ export default function ClawsteinGame() {
                     <div className="font-semibold">Rewards</div>
                   </div>
                   <div className="mt-1 text-xs text-white/70">
-                    Top 5 automatically win token rewards.
+                    Friendly bragging rights and fun surprises at launch.
                   </div>
                 </div>
               </div>
@@ -243,7 +244,7 @@ export default function ClawsteinGame() {
                 <div>
                   <div className="text-white font-semibold">How it works</div>
                   <div className="text-xs text-white/60">
-                    Token-gated • wallet-powered • leaderboard-driven
+                    Cozy preview • friendly leaderboard • beach vibes
                   </div>
                 </div>
               </div>
@@ -259,7 +260,8 @@ export default function ClawsteinGame() {
                   <div className="text-xs text-white/70">Catch beachgoers</div>
                 </div>
                 <div className="mt-2 text-sm text-white/80">
-                  Hunt, tag, and rack up score streaks on the sand.
+                  Cruise the sand and rack up little score streaks — purely for
+                  fun.
                 </div>
               </div>
 
@@ -270,7 +272,7 @@ export default function ClawsteinGame() {
                     <div className="font-semibold">Requirements</div>
                   </div>
                   <div className="text-xs text-white/70">
-                    Solana wallet + tokens
+                    Nothing required
                   </div>
                 </div>
 
@@ -279,17 +281,16 @@ export default function ClawsteinGame() {
                     <span className="text-sand-200 text-lg mt-0.5">•</span>
                     <span>
                       <span className="font-semibold text-white">Wallet:</span>{" "}
-                      Solana wallet connected
+                      not needed for preview (optional later)
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-sand-200 text-lg mt-0.5">•</span>
                     <span>
                       <span className="font-semibold text-white">
-                        Min holding:
+                        Token:
                       </span>{" "}
-                      at least{" "}
-                      <span className="font-mono">1,000,000</span> $CLAWSTEIN
+                      $wifclaw (contract placeholder: <span className="font-mono">0x000000</span>)
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
@@ -298,7 +299,7 @@ export default function ClawsteinGame() {
                       <span className="font-semibold text-white">
                         Leaderboard:
                       </span>{" "}
-                      wallet addresses displayed
+                      playful names and scores
                     </span>
                   </li>
                 </ul>
@@ -307,16 +308,17 @@ export default function ClawsteinGame() {
               <div className="rounded-2xl bg-gradient-to-b from-claw-300/20 to-white/5 border border-white/10 p-4">
                 <div className="flex items-center gap-2 text-white">
                   <Trophy className="text-sand-200 text-lg" />
-                  <div className="font-semibold">Top 5 auto-win</div>
+                  <div className="font-semibold">Good vibes leaderboard</div>
                 </div>
                 <div className="mt-2 text-sm text-white/80">
-                  Score highest, end of round → automatic token distribution to
-                  the top 5 wallets.
+                  Score high, feel good. Rewards and onchain bits come later —
+                  for now it’s just a sunny preview.
                 </div>
               </div>
 
               <div className="pt-2 text-xs text-white/60">
-                Live gameplay + wallet checks will be implemented at launch.
+                Live gameplay and optional wallet features will be implemented
+                at launch.
               </div>
             </div>
           </div>

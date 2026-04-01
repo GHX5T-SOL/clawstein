@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "$CLAWSTEIN | Your Personal Jewish Banker & Entertainment Guide",
+  title: "$wifclaw | Your Cheerful Beach Buddy",
   description:
-    "$CLAWSTEIN - OpenClaw agent. The Pump.fun token with a lobster mascot. Chat with Clawstein, your personal Jewish Banker & entertainment guide.",
+    "$wifclaw — dogwifclaw, your happy beach buddy bringing comfort, calm vibes, and fun. Say hi, get a little solace, and catch the sunshine.",
   icons: {
     icon: "/clawstein.png",
   },

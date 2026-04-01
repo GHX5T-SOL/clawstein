@@ -53,6 +53,7 @@ function ClawsteinMascot() {
       <group position={[0, 2, 2]}>
         <Image
           url="/clawstein.png"
+          alt=""
           scale={[2.5, 3]}
           position={[0, 0, 0]}
         />

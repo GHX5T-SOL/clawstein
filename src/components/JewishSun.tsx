@@ -46,13 +46,6 @@ export default function JewishSun() {
           })}
           {/* Main sun body */}
           <circle cx="48" cy="48" r="26" fill="url(#sun-core)" stroke="#f59e0b" strokeWidth="1.5" filter="url(#sun-glow)" />
-          {/* Kippah (yarmulke) - Jewish touch */}
-          <path
-            d="M28 34 Q48 24 68 34 Q66 28 48 26 Q30 28 28 34 Z"
-            fill="#1e3a5f"
-            stroke="#1e293b"
-            strokeWidth="1"
-          />
           {/* Smiling mouth */}
           <path
             d="M34 54 Q48 62 62 54"
