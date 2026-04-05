@@ -34,7 +34,7 @@ const DEMO_REPLIES = [
   "Hey friend. Take a breath — you're on the beach with me now. What do you need today?",
   "I’ve got sunshine, calm waves, and a playlist that feels like a soft reset. Want cozy, hype, or mellow?",
   "$wifclaw is a vibe-first meme token world — beach energy, comfort, and a little playful chaos (the wholesome kind).",
-  "Contract address is a placeholder for now (`0x000000`). When it’s real, you’ll see it front and center.",
+  "The mint address is right on the page — copy it anytime. Then we can talk vibes, comfort, and beach nonsense.",
   "No pressure here. We do gentle vibes, steady breaths, and tiny wins — one wave at a time.",
 ];
 
@@ -63,7 +63,7 @@ type ChatMessage = { id: string; role: "user" | "assistant"; content: string };
 function generateClawsteinReply(userText: string): string {
   const t = userText.toLowerCase();
   if (t.includes("contract"))
-    return "Contract address is a placeholder for now: `0x000000`. When it’s live, we’ll update it everywhere.";
+    return "That mint is listed up top — copy it from the contract badge. It’s the real $wifclaw token address.";
   if (t.includes("wallet") || t.includes("solana"))
     return "Wallet stuff can wait — the mini-game is just a preview for now. For today: beach vibes and good company.";
   if (t.includes("tokens") || t.includes("1m") || t.includes("1,000,000"))

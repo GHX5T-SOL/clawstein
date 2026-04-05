@@ -1,8 +1,11 @@
 "use client";
 
 import { useCallback } from "react";
-
-const CONTRACT_ADDRESS = "0x000000";
+import {
+  WIFCLAW_MINT_ADDRESS,
+  WIFCLAW_PUMP_FUN_URL,
+  WIFCLAW_SOLSCAN_TOKEN_URL,
+} from "@/lib/contract";
 
 function CopyButton({ text }: { text: string }) {
   const copy = useCallback(() => {
@@ -30,15 +33,14 @@ export default function TokenSection() {
           </h2>
           <div className="mb-6 flex flex-col items-center gap-4">
             <p className="text-center text-amber-100">Contract Address</p>
-            <CopyButton text={CONTRACT_ADDRESS} />
+            <CopyButton text={WIFCLAW_MINT_ADDRESS} />
           </div>
           <p className="mb-6 text-center text-amber-200/80">
             dogwifclaw token. A cozy beach vibe with a fun mini-game preview.
-            Contract address is a placeholder for now.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="https://pump.fun"
+              href={WIFCLAW_PUMP_FUN_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-xl bg-rose-500 px-6 py-3 font-semibold text-white transition hover:bg-rose-600"
@@ -46,7 +48,7 @@ export default function TokenSection() {
               Pump.fun
             </a>
             <a
-              href="https://solscan.io"
+              href={WIFCLAW_SOLSCAN_TOKEN_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-xl border-2 border-amber-400 bg-amber-400/20 px-6 py-3 font-semibold text-amber-100 transition hover:bg-amber-400/40"

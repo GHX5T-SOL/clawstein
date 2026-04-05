@@ -1,9 +1,7 @@
 "use client";
 
 import { Fish, Twitter, Mail, ExternalLink } from "lucide-react";
-
-const CONTRACT_ADDRESS =
-  process.env.NEXT_PUBLIC_CONTRACT_ADDRESS ?? "0x000000";
+import { WIFCLAW_MINT_ADDRESS, WIFCLAW_SOLSCAN_TOKEN_URL } from "@/lib/contract";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -62,7 +60,7 @@ export default function Footer() {
               </a>
               <a
                 id="footer-solscan-link"
-                href="https://solscan.io"
+                href={WIFCLAW_SOLSCAN_TOKEN_URL}
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-2xl bg-white/5 border border-white/10 px-4 py-3 text-white hover:bg-white/10 transition"
@@ -72,7 +70,7 @@ export default function Footer() {
                   <div className="font-semibold">Contract</div>
                 </div>
                 <div className="mt-1 text-xs text-white/60">
-                  Explorer link (placeholder)
+                  View on Solscan
                 </div>
               </a>
             </div>
@@ -82,7 +80,7 @@ export default function Footer() {
                 © {year} $wifclaw. Beach vibes online.
               </div>
               <div className="font-mono text-[11px] sm:text-xs break-all sm:break-normal">
-                Contract: {CONTRACT_ADDRESS}
+                Contract: {WIFCLAW_MINT_ADDRESS}
               </div>
             </div>
           </div>

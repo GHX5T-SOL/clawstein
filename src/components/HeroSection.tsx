@@ -10,10 +10,7 @@ import {
   Gamepad2,
   ScanFace,
 } from "lucide-react";
-
-const CONTRACT_ADDRESS =
-  process.env.NEXT_PUBLIC_CONTRACT_ADDRESS ?? "0x000000";
-const SOLSCAN_URL = `https://solscan.io`;
+import { WIFCLAW_MINT_ADDRESS, WIFCLAW_SOLSCAN_TOKEN_URL } from "@/lib/contract";
 
 function CopyButton({
   text,
@@ -165,23 +162,23 @@ export default function HeroSection() {
                     id="contract-text"
                     className="font-mono text-white text-sm sm:text-base tracking-tight"
                   >
-                    {CONTRACT_ADDRESS}
+                    {WIFCLAW_MINT_ADDRESS}
                   </span>
                   <CopyButton
-                    text={CONTRACT_ADDRESS}
+                    text={WIFCLAW_MINT_ADDRESS}
                     onCopy={() =>
-                      showToast("Contract copied: " + CONTRACT_ADDRESS)
+                      showToast("Contract copied: " + WIFCLAW_MINT_ADDRESS)
                     }
                   />
                   <a
                     id="solscan-link"
-                    href={SOLSCAN_URL}
+                    href={WIFCLAW_SOLSCAN_TOKEN_URL}
                     target="_blank"
                     rel="noreferrer"
                     className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-gradient-to-b from-sand-200 to-sand-400 text-slate-900 text-sm font-medium hover:brightness-[1.02] transition"
                   >
                     <ExternalLink className="text-base" />
-                    Explorer (placeholder)
+                    View on Solscan
                   </a>
                 </div>
               </div>
@@ -294,13 +291,13 @@ export default function HeroSection() {
             <div className="mt-5 sm:hidden">
               <a
                 id="solscan-link-mobile"
-                href={SOLSCAN_URL}
+                href={WIFCLAW_SOLSCAN_TOKEN_URL}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex w-full items-center justify-center gap-2 h-12 px-5 rounded-2xl bg-gradient-to-b from-sand-200 to-sand-400 text-slate-900 font-semibold shadow-soft-xl"
               >
                 <ExternalLink className="text-xl" />
-                Explorer (placeholder)
+                View on Solscan
               </a>
             </div>
           </div>

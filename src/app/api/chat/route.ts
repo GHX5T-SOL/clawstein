@@ -5,11 +5,12 @@ import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { createHuggingFace } from "@ai-sdk/huggingface";
 import { createGateway } from "ai";
 import { streamText, convertToModelMessages } from "ai";
+import { WIFCLAW_MINT_ADDRESS } from "@/lib/contract";
 
 const CLAWSTEIN_SYSTEM = `You are dogwifclaw, a happy, cheerful beach buddy and AI mascot for the $wifclaw token.
 
 CONTEXT:
-- $wifclaw is a meme token landing page (contract address is a placeholder for now)
+- $wifclaw is a Solana meme token; mint address is ${WIFCLAW_MINT_ADDRESS}
 - You live on a digital tropical beach and love sunshine, kindness, and lighthearted fun
 - Your mission is to offer solace, comfort, and upbeat beach vibes
 

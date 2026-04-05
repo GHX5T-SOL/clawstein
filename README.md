@@ -19,6 +19,7 @@ npm run dev
 
 ## Environment Variables (Vercel)
 
+- `NEXT_PUBLIC_CONTRACT_ADDRESS` — optional override for the $wifclaw mint shown on the site (defaults to the committed mainnet mint)
 - `GEMINI_API_KEY` or `GOOGLE_GENERATIVE_AI_API_KEY` — for cheap/free chat via Gemini 2.0 Flash
 - `OPENAI_API_KEY` — fallback for GPT-4o-mini
 

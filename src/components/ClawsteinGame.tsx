@@ -16,6 +16,7 @@ import {
   ClipboardList,
   BadgeDollarSign,
 } from "lucide-react";
+import { WIFCLAW_MINT_ADDRESS } from "@/lib/contract";
 
 export default function ClawsteinGame() {
   const lobsterRef = useRef<HTMLDivElement>(null);
@@ -290,7 +291,10 @@ export default function ClawsteinGame() {
                       <span className="font-semibold text-white">
                         Token:
                       </span>{" "}
-                      $wifclaw (contract placeholder: <span className="font-mono">0x000000</span>)
+                      $wifclaw mint:{" "}
+                      <span className="font-mono break-all">
+                        {WIFCLAW_MINT_ADDRESS}
+                      </span>
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
